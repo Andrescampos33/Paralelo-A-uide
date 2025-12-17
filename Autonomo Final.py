@@ -82,6 +82,7 @@ def juego(palabra):
 
     print("\n=== ¡Juguemos al Ahorcado! ===")
     print(visual_ahorcado(intentos))
+     print("\n=== solo se pueden ingresar letras===")
     print(palabra_completa)
     print("\n")
 
@@ -137,3 +138,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
