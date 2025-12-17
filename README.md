@@ -1,4 +1,4 @@
-# Paralelo-A-uide
+# Paralelo-A-uide README Juego del Ahorcado
 Software: Juego del Ahorcado
 Objetivo: Desarrollar habilidades fundamentales de pensamiento lógico y programación, aplicando conceptos básicos del lenguaje en un problema real y completo.
 Introducción al Programa:
