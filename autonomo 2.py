@@ -1,36 +1,40 @@
 import random
 
-# Lista de palabras posibles
-PALABRAS = [
-    "PYTHON",
-    "ENCEBOLLADO",
-    "PROGRAMACION",
-    "UIDE",
-    "FRITADA",
-    "INGENIERIA",
-    "ENCRIPTADO"
-]
+# Lista de palabras 
+lista_de_palabras = [ "PYTHON", "ENCEBOLLADO", "PROGRAMACION",
+    "UIDE", "FRITADA", "INGENIERIA", "ENCRIPTADO"]
 
+def juego(palabra):
+    palabra_completa = "_" * len(palabra)
+    estado_adivinado = False
+    letras_correctas = []
+    palabras_adivinadas = []
+    intentos = 6
 
-def mostrar_estado(palabra, letras_correctas, letras_incorrectas, intentos_restantes):
-    # Construir la palabra con guiones bajos y letras acertadas
-    palabra_mostrada = " ".join(
-        [letra if letra in letras_correctas else "_" for letra in palabra]
-    )
-    print("\nPalabra: ", palabra_mostrada)
-    print("Intentos restantes:", intentos_restantes)
-    if letras_incorrectas:
-        print("Letras incorrectas:", " ".join(sorted(letras_incorrectas)))
-    else:
-        print("Letras incorrectas: (ninguna)")
+    print("\n=== ¡Juguemos al Ahorcado! ===")
+    print(visual_ahorcado(intentos))
+    print(palabra_completa)
+    print("\n")
 
+    while not estado_adivinado and intentos > 0:
+        entrada = input("Por favor, escriba una letra o palabra: ").upper()
 
-def jugar_ahorcado():
-    palabra = random.choice(PALABRAS)
-    letras_correctas = set()
-    letras_incorrectas = set()
-    intentos_restantes = 6
-
-    print("\n=== Nuevo juego del Ahorcado ===")
+        if len(entrada) == 1 and entrada.isalpha():
+            if entrada in letras_correctas:
+                print(f"Ya adivinaste la letra {entrada}")
+            elif entrada not in palabra:
+                print(f"{entrada} no está en la palabra")
+                intentos -= 1
+                letras_correctas.append(entrada)
+            else:
+                print(f"¡Bien hecho! {entrada} está en la palabra")
+                letras_correctas.append(entrada)
+                lista_entrada = list(palabra_completa)
+                indices = [i for i, letra in enumerate(palabra) if letra == entrada]
+                for index in indices:
+                    lista_entrada[index] = entrada
+                palabra_completa = "".join(lista_entrada)
+                if "_" not in palabra_completa:
+                    estado_adivinado = True
 
     
